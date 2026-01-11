@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        #info-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        #info-panel h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        #info-panel h2 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+
+        #info-panel h3 {
+            color: #555;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        #info-panel p, #info-panel li {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        #info-panel ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #info-panel li:before {
+            content: "▹ ";
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: white;
+            margin: 5px 0;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            margin: 5px 5px 5px 0;
+            font-size: 12px;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .project-card h4 {
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .project-card .period {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .project-card .tech {
+            font-size: 12px;
+            color: #555;
+        }
+
+        #controls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        #controls button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        #controls button:hover {
+            transform: scale(1.05);
+        }
+
+        #controls button.active {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .stat-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            #info-panel {
+                max-width: 90%;
+                right: 5%;
+                top: 10px;
+            }
+            
+            #controls {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+            }
+
+            #controls button {
+                display: block;
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <div id="info-panel">
+        <h1>Full Stack Developer</h1>
+        <div class="contact-info">
+            <p>💼 Senior Full Stack Developer</p>
+            <p>🎯 Project Leader</p>
+            <p>🚀 24+ Years of Experience</p>
+        </div>
+
+        <div class="stat-badge">Projects: 45+</div>
+        <div class="stat-badge">PL Experience: 3</div>
+
+        <h2>🎯 Core Competencies</h2>
+        <div>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Vue.js</span>
+            <span class="skill-tag">Oracle</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">MSA</span>
+        </div>
+
+        <h2>💼 Technical Stack</h2>
+        <h3>Backend</h3>
+        <ul>
+            <li>Java (45 projects)</li>
+            <li>Spring Boot (18 projects)</li>
+            <li>MSA Architecture</li>
+        </ul>
+
+        <h3>Frontend</h3>
+        <ul>
+            <li>React (4 projects)</li>
+            <li>Vue.js (4 projects)</li>
+            <li>JSP</li>
+        </ul>
+
+        <h3>Database</h3>
+        <ul>
+            <li>Oracle (29 projects)</li>
+            <li>MySQL (9 projects)</li>
+            <li>PostgreSQL, MSSQL</li>
+        </ul>
+
+        <h3>DevOps</h3>
+        <ul>
+            <li>AWS Cloud</li>
+            <li>GitLab, GitHub</li>
+            <li>CI/CD Pipeline</li>
+        </ul>
+
+        <h2>🏆 Featured Projects</h2>
+        
+        <div class="project-card">
+            <h4>Lotte Hotel PMS (Booking)</h4>
+            <div class="period">2025.03 ~ 2025.08 (Ongoing)</div>
+            <p>Hotel reservation management system</p>
+            <div class="tech">Tech: Java, Spring Boot, PostgreSQL, React</div>
+        </div>
+
+        <div class="project-card">
+            <h4>Tax Accountant ERP</h4>
+            <div class="period">2024.09 ~ 2025.02</div>
+            <p>Common modules and ERP system development</p>
+            <div class="tech">Tech: Java, Spring Boot, Oracle, React</div>
+        </div>
+
+        <div class="project-card">
+            <h4>AIA Life Visible TM (PL)</h4>
+            <div class="period">2023.12 ~ 2024.04</div>
+            <p>Telemarketing system project lead</p>
+            <div class="tech">Tech: Java, Spring Boot, MSSQL, JSP</div>
+        </div>
+
+        <div class="project-card">
+            <h4>Lotte Card MyData 2.0</h4>
+            <div class="period">2023.08 ~ 2024.06</div>
+            <p>Financial MyData system design & development</p>
+            <div class="tech">Tech: Java, Spring Boot, Oracle, Vue.js</div>
+        </div>
+
+        <div class="project-card">
+            <h4>Hana Savings Bank Digital (PL)</h4>
+            <div class="period">2020.05 ~ 2020.12</div>
+            <p>Non-face-to-face financial service platform</p>
+            <div class="tech">Tech: Java, Spring Boot, PostgreSQL, React, AWS</div>
+        </div>
+
+        <h2>📚 Certifications</h2>
+        <ul>
+            <li>Information Processing Engineer (1998.06)</li>
+            <li>MCSE (1999.08)</li>
+            <li>SCJP (2002.02)</li>
+        </ul>
+
+        <h2>🎓 Education</h2>
+        <ul>
+            <li>AI Language Master Course (2025)</li>
+            <li>Python Web Development (2020)</li>
+            <li>Business Automation Course (2020)</li>
+            <li>Java Expert Course (2000)</li>
+        </ul>
+
+        <h2>💡 Highlights</h2>
+        <ul>
+            <li>Project Leader: 3 projects</li>
+            <li>Financial sector expertise</li>
+            <li>MSA architecture experience</li>
+            <li>Electronic approval systems</li>
+        </ul>
+    </div>
+
+    <div id="controls">
+        <button onclick="changeView('skills')" class="active" id="btn-skills">Tech Stack</button>
+        <button onclick="changeView('projects')" id="btn-projects">Projects</button>
+        <button onclick="changeView('timeline')" id="btn-timeline">Timeline</button>
+        <button onclick="changeView('architecture')" id="btn-architecture">Architecture</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.min.js"></script>
+    <script>
+        let scene, camera, renderer;
+        let currentView = 'skills';
+        let objects = [];
+
+        const projectsByYear = [
+            { name: 'Lotte Hotel PMS', year: 2025, color: 0xff6b6b, role: 'Developer' },
+            { name: 'Kolon Industries LIMS', year: 2025, color: 0xff6b6b, role: 'Developer' },
+            { name: 'Tax Accountant ERP', year: 2024, color: 0xf39c12, role: 'Developer' },
+            { name: 'Media Will Job Portal', year: 2024, color: 0xf39c12, role: 'Developer' },
+            { name: 'AIA Life TM', year: 2023, color: 0xe74c3c, role: 'PL' },
+            { name: 'Lotte Card MyData', year: 2023, color: 0xe74c3c, role: 'Developer' },
+            { name: 'Hanwha Financial Orange', year: 2022, color: 0x9b59b6, role: 'Developer' },
+            { name: 'Samsung Welstory', year: 2022, color: 0x9b59b6, role: 'Developer' },
+            { name: 'Hana Capital', year: 2021, color: 0x3498db, role: 'PL' },
+            { name: 'Hana Bank Smart Banking', year: 2021, color: 0x3498db, role: 'Developer' },
+            { name: 'Hana Savings Bank', year: 2020, color: 0x1abc9c, role: 'PL' },
+            { name: 'Golfzon', year: 2019, color: 0x16a085, role: 'Developer' },
+            { name: 'Hyundai Card OPEN API', year: 2019, color: 0x16a085, role: 'Developer' },
+            { name: 'Lotte Parcel Service', year: 2019, color: 0x16a085, role: 'Developer' },
+            { name: 'Blockchain Local Currency', year: 2018, color: 0x27ae60, role: 'Developer' },
+            { name: 'Renault Samsung', year: 2018, color: 0x27ae60, role: 'Developer' },
+            { name: 'Hana Financial Corp Loan', year: 2017, color: 0x2ecc71, role: 'Developer' }
+        ];
+
+        const skills = {
+            'Java': { count: 45, color: 0xff6b6b, size: 2.0 },
+            'Spring Boot': { count: 18, color: 0x6bcf7f, size: 1.5 },
+            'Oracle': { count: 29, color: 0x4ecdc4, size: 1.8 },
+            'MySQL': { count: 9, color: 0xffe66d, size: 1.2 },
+            'React': { count: 4, color: 0x61dafb, size: 1.0 },
+            'Vue.js': { count: 4, color: 0x42b883, size: 1.0 },
+            'AWS': { count: 5, color: 0xff9f43, size: 1.1 },
+            'MSA': { count: 3, color: 0x9b59b6, size: 0.9 }
+        };
+
+        function init() {
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x1a1a2e);
+            scene.fog = new THREE.Fog(0x1a1a2e, 10, 50);
+
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 5, 15);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(10, 10, 5);
+            scene.add(directionalLight);
+
+            const pointLight1 = new THREE.PointLight(0x667eea, 1, 100);
+            pointLight1.position.set(-10, 5, 5);
+            scene.add(pointLight1);
+
+            const pointLight2 = new THREE.PointLight(0x764ba2, 1, 100);
+            pointLight2.position.set(10, 5, -5);
+            scene.add(pointLight2);
+
+            createSkillsView();
+
+            window.addEventListener('resize', onWindowResize);
+            document.addEventListener('mousemove', onMouseMove);
+
+            animate();
+        }
+
+        function createSkillsView() {
+            clearObjects();
+            
+            const categories = {
+                backend: { skills: ['Java', 'Spring Boot'], center: { x: -6, y: 2, z: 0 }, color: 0xff6b6b },
+                database: { skills: ['Oracle', 'MySQL'], center: { x: 6, y: 2, z: 0 }, color: 0x4ecdc4 },
+                frontend: { skills: ['React', 'Vue.js'], center: { x: 0, y: 5, z: -5 }, color: 0x61dafb },
+                devops: { skills: ['AWS', 'MSA'], center: { x: 0, y: -1, z: 5 }, color: 0xff9f43 }
+            };
+
+            Object.entries(categories).forEach(([catName, catData]) => {
+                const labelCanvas = document.createElement('canvas');
+                const labelContext = labelCanvas.getContext('2d');
+                labelCanvas.width = 512;
+                labelCanvas.height = 128;
+                labelContext.fillStyle = '#ffffff';
+                labelContext.font = 'Bold 48px Arial';
+                labelContext.textAlign = 'center';
+                labelContext.fillText(catName.toUpperCase(), 256, 80);
+
+                const labelTexture = new THREE.CanvasTexture(labelCanvas);
+                const labelSprite = new THREE.SpriteMaterial({ map: labelTexture, transparent: true, opacity: 0.8 });
+                const label = new THREE.Sprite(labelSprite);
+                label.position.set(catData.center.x, catData.center.y + 4, catData.center.z);
+                label.scale.set(4, 1, 1);
+                scene.add(label);
+                objects.push(label);
+
+                const ringGeometry = new THREE.TorusGeometry(3, 0.1, 16, 50);
+                const ringMaterial = new THREE.MeshPhongMaterial({
+                    color: catData.color,
+                    emissive: catData.color,
+                    emissiveIntensity: 0.5,
+                    transparent: true,
+                    opacity: 0.3
+                });
+                const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+                ring.position.set(catData.center.x, catData.center.y, catData.center.z);
+                ring.rotation.x = Math.PI / 2;
+                ring.userData = { rotationSpeed: 0.005 };
+                scene.add(ring);
+                objects.push(ring);
+            });
+
+            Object.entries(categories).forEach(([catName, catData]) => {
+                catData.skills.forEach((skillName, idx) => {
+                    const data = skills[skillName];
+                    if (!data) return;
+
+                    const angle = (idx / catData.skills.length) * Math.PI * 2;
+                    const localRadius = 2.5;
+                    const x = catData.center.x + Math.cos(angle) * localRadius;
+                    const z = catData.center.z + Math.sin(angle) * localRadius;
+                    const y = catData.center.y;
+
+                    const geometry = new THREE.SphereGeometry(data.size, 32, 32);
+                    const material = new THREE.MeshPhongMaterial({
+                        color: data.color,
+                        emissive: data.color,
+                        emissiveIntensity: 0.4,
+                        shininess: 100,
+                        transparent: true,
+                        opacity: 0.9
+                    });
+                    const sphere = new THREE.Mesh(geometry, material);
+                    sphere.position.set(x, y, z);
+                    sphere.userData = { 
+                        name: skillName, 
+                        count: data.count, 
+                        initialPos: { x, y, z },
+                        orbitAngle: angle,
+                        orbitRadius: localRadius,
+                        centerX: catData.center.x,
+                        centerZ: catData.center.z,
+                        centerY: catData.center.y
+                    };
+                    scene.add(sphere);
+                    objects.push(sphere);
+
+                    const outerRingGeometry = new THREE.TorusGeometry(data.size + 0.3, 0.05, 8, 32);
+                    const outerRingMaterial = new THREE.MeshPhongMaterial({
+                        color: data.color,
+                        emissive: data.color,
+                        emissiveIntensity: 0.6,
+                        transparent: true,
+                        opacity: 0.7
+                    });
+                    const outerRing = new THREE.Mesh(outerRingGeometry, outerRingMaterial);
+                    outerRing.position.set(x, y, z);
+                    outerRing.userData = { 
+                        parentSphere: sphere,
+                        rotationSpeedX: 0.02,
+                        rotationSpeedY: 0.015
+                    };
+                    scene.add(outerRing);
+                    objects.push(outerRing);
+
+                    const particleCount = data.count;
+                    const particleGeometry = new THREE.BufferGeometry();
+                    const particlePositions = [];
+                    
+                    for (let i = 0; i < particleCount; i++) {
+                        const px = x + (Math.random() - 0.5) * data.size * 3;
+                        const py = y + (Math.random() - 0.5) * data.size * 3;
+                        const pz = z + (Math.random() - 0.5) * data.size * 3;
+                        particlePositions.push(px, py, pz);
+                    }
+                    
+                    particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(particlePositions, 3));
+                    const particleMaterial = new THREE.PointsMaterial({
+                        color: data.color,
+                        size: 0.1,
+                        transparent: true,
+                        opacity: 0.6
+                    });
+                    const particles = new THREE.Points(particleGeometry, particleMaterial);
+                    particles.userData = { 
+                        parentSphere: sphere,
+                        rotationSpeed: 0.001
+                    };
+                    scene.add(particles);
+                    objects.push(particles);
+
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.width = 512;
+                    canvas.height = 256;
+                    
+                    const gradient = context.createLinearGradient(0, 0, 512, 256);
+                    gradient.addColorStop(0, 'rgba(102, 126, 234, 0.8)');
+                    gradient.addColorStop(1, 'rgba(118, 75, 162, 0.8)');
+                    context.fillStyle = gradient;
+                    context.roundRect(10, 10, 492, 236, 20);
+                    context.fill();
+                    
+                    context.fillStyle = '#ffffff';
+                    context.font = 'Bold 56px Arial';
+                    context.textAlign = 'center';
+                    context.fillText(skillName, 256, 100);
+                    
+                    context.font = 'Bold 48px Arial';
+                    context.fillStyle = '#FFD700';
+                    context.fillText(`${data.count}x`, 256, 170);
+
+                    const texture = new THREE.CanvasTexture(canvas);
+                    const spriteMaterial = new THREE.SpriteMaterial({ 
+                        map: texture,
+                        transparent: true
+                    });
+                    const sprite = new THREE.Sprite(spriteMaterial);
+                    sprite.position.set(x, y + data.size + 2, z);
+                    sprite.scale.set(4.5, 2.5, 1);
+                    sprite.userData = { parentSphere: sphere };
+                    scene.add(sprite);
+                    objects.push(sprite);
+
+                    const linePoints = [
+                        new THREE.Vector3(catData.center.x, catData.center.y, catData.center.z),
+                        new THREE.Vector3(x, y, z)
+                    ];
+                    const lineGeometry = new THREE.BufferGeometry().setFromPoints(linePoints);
+                    const lineMaterial = new THREE.LineBasicMaterial({
+                        color: data.color,
+                        opacity: 0.4,
+                        transparent: true,
+                        linewidth: 2
+                    });
+                    const line = new THREE.Line(lineGeometry, lineMaterial);
+                    scene.add(line);
+                    objects.push(line);
+                });
+            });
+        }
+
+        function createProjectsView() {
+            clearObjects();
+
+            const featuredProjects = [
+                { 
+                    name: 'Lotte Hotel PMS', 
+                    year: 2025, 
+                    category: 'Ongoing',
+                    role: 'Developer',
+                    tech: ['Java', 'Spring Boot', 'PostgreSQL', 'React'],
+                    description: 'Hotel reservation system',
+                    color: 0xff6b6b
+                },
+                { 
+                    name: 'Tax Accountant ERP', 
+                    year: 2024, 
+                    category: 'ERP',
+                    role: 'Developer',
+                    tech: ['Java', 'Spring Boot', 'Oracle', 'React'],
+                    description: 'ERP system development',
+                    color: 0xf39c12
+                },
+                { 
+                    name: 'AIA Life TM', 
+                    year: 2023, 
+                    category: 'PL',
+                    role: 'Project Leader',
+                    tech: ['Java', 'Spring Boot', 'MSSQL', 'JSP'],
+                    description: 'TM system construction',
+                    color: 0xe74c3c
+                },
+                { 
+                    name: 'Lotte Card MyData', 
+                    year: 2023, 
+                    category: 'Finance',
+                    role: 'Developer',
+                    tech: ['Java', 'Oracle', 'Vue.js'],
+                    description: 'Financial MyData system',
+                    color: 0x9b59b6
+                },
+                { 
+                    name: 'Hana Savings Bank', 
+                    year: 2020, 
+                    category: 'PL/Finance',
+                    role: 'Project Leader',
+                    tech: ['Java', 'PostgreSQL', 'React', 'AWS'],
+                    description: 'Digital banking service',
+                    color: 0x1abc9c
+                },
+                { 
+                    name: 'Hana Bank Smart Banking', 
+                    year: 2021, 
+                    category: 'MSA',
+                    role: 'Developer',
+                    tech: ['Java', 'Vue.js', 'AWS', 'MySQL'],
+                    description: 'MSA-based banking',
+                    color: 0x3498db
+                },
+                { 
+                    name: 'Hyundai Card OPEN API', 
+                    year: 2019, 
+                    category: 'Finance',
+                    role: 'Developer',
+                    tech: ['Java', 'Spring Boot', 'PostgreSQL'],
+                    description: 'API integration system',
+                    color: 0x16a085
+                },
+                { 
+                    name: 'Hana Financial Corp Loan', 
+                    year: 2017, 
+                    category: 'Finance',
+                    role: 'Developer',
+                    tech: ['Java', 'Oracle'],
+                    description: 'Corporate loan system',
+                    color: 0x27ae60
+                }
+            ];
+
+            const rows = 2;
+            const cols = 4;
+            const spacing = 6;
+
+            featuredProjects.forEach((project, idx) => {
+                const row = Math.floor(idx / cols);
+                const col = idx % cols;
+                
+                const x = (col - (cols - 1) / 2) * spacing;
+                const y = (row - (rows - 1) / 2) * -4;
+                const z = 0;
+
+                const cardGroup = new THREE.Group();
+                cardGroup.position.set(x, y, z);
+
+                const frontGeometry = new THREE.BoxGeometry(4.5, 3.5, 0.1);
+                const frontMaterial = new THREE.MeshPhongMaterial({
+                    color: project.color,
+                    emissive: project.color,
+                    emissiveIntensity: 0.4,
+                    shininess: 80
+                });
+                const frontCard = new THREE.Mesh(frontGeometry, frontMaterial);
+                cardGroup.add(frontCard);
+
+                const edgesGeometry = new THREE.EdgesGeometry(frontGeometry);
+                const edgesMaterial = new THREE.LineBasicMaterial({ 
+                    color: 0xffffff, 
+                    linewidth: 2,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const edges = new THREE.LineSegments(edgesGeometry, edgesMaterial);
+                cardGroup.add(edges);
+
+                const frontCanvas = document.createElement('canvas');
+                const frontContext = frontCanvas.getContext('2d');
+                frontCanvas.width = 512;
+                frontCanvas.height = 384;
+                
+                const gradient = frontContext.createLinearGradient(0, 0, 0, 384);
+                gradient.addColorStop(0, 'rgba(0, 0, 0, 0.3)');
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0.1)');
+                frontContext.fillStyle = gradient;
+                frontContext.fillRect(0, 0, 512, 384);
+                
+                frontContext.fillStyle = '#ffffff';
+                frontContext.font = 'Bold 44px Arial';
+                frontContext.textAlign = 'center';
+                frontContext.fillText(project.name, 256, 80);
+                
+                frontContext.font = '36px Arial';
+                frontContext.fillStyle = '#FFD700';
+                frontContext.fillText(project.year.toString(), 256, 140);
+                
+                frontContext.font = 'Bold 32px Arial';
+                frontContext.fillStyle = '#ffffff';
+                frontContext.fillText(project.category, 256, 190);
+                
+                frontContext.font = '28px Arial';
+                frontContext.fillStyle = '#00ff00';
+                frontContext.fillText(project.role, 256, 240);
+
+                if (project.role === 'Project Leader') {
+                    frontContext.font = '48px Arial';
+                    frontContext.fillText('⭐', 256, 300);
+                }
+
+                const frontTexture = new THREE.CanvasTexture(frontCanvas);
+                const frontSpriteMaterial = new THREE.SpriteMaterial({ map: frontTexture });
+                const frontSprite = new THREE.Sprite(frontSpriteMaterial);
+                frontSprite.position.set(0, 0, 0.06);
+                frontSprite.scale.set(4.5, 3.5, 1);
+                cardGroup.add(frontSprite);
+
+                const backCanvas = document.createElement('canvas');
+                const backContext = backCanvas.getContext('2d');
+                backCanvas.width = 512;
+                backCanvas.height = 384;
+                
+                backContext.fillStyle = 'rgba(0, 0, 0, 0.8)';
+                backContext.fillRect(0, 0, 512, 384);
+                
+                backContext.fillStyle = '#ffffff';
+                backContext.font = 'Bold 36px Arial';
+                backContext.textAlign = 'center';
+                backContext.fillText('Tech Stack', 256, 50);
+                
+                backContext.font = '28px Arial';
+                project.tech.forEach((tech, techIdx) => {
+                    const techY = 110 + techIdx * 50;
+                    backContext.fillStyle = '#00ffff';
+                    backContext.fillText('• ' + tech, 256, techY);
+                });
+
+                const backTexture = new THREE.CanvasTexture(backCanvas);
+                const backSpriteMaterial = new THREE.SpriteMaterial({ map: backTexture });
+                const backSprite = new THREE.Sprite(backSpriteMaterial);
+                backSprite.position.set(0, 0, -0.06);
+                backSprite.scale.set(4.5, 3.5, 1);
+                backSprite.rotation.y = Math.PI;
+                cardGroup.add(backSprite);
+
+                cardGroup.userData = { 
+                    rotationSpeed: 0.002 + Math.random() * 0.003,
+                    hoverHeight: y,
+                    baseY: y,
+                    floatSpeed: 0.001 + idx * 0.0002,
+                    flipSpeed: 0
+                };
+
+                scene.add(cardGroup);
+                objects.push(cardGroup);
+
+                const particleCount = 20;
+                const particleGeometry = new THREE.BufferGeometry();
+                const particlePositions = [];
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const px = x + (Math.random() - 0.5) * 6;
+                    const py = y + (Math.random() - 0.5) * 5;
+                    const pz = z + (Math.random() - 0.5) * 2;
+                    particlePositions.push(px, py, pz);
+                }
+                
+                particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(particlePositions, 3));
+                const particleMaterial = new THREE.PointsMaterial({
+                    color: project.color,
+                    size: 0.15,
+                    transparent: true,
+                    opacity: 0.5
+                });
+                const particles = new THREE.Points(particleGeometry, particleMaterial);
+                particles.userData = { rotationSpeed: 0.0005 };
+                scene.add(particles);
+                objects.push(particles);
+            });
+        }
+
+        function createTimelineView() {
+            clearObjects();
+
+            const startYear = 2017;
+            const endYear = 2025;
+            const yearsSpan = endYear - startYear;
+
+            const axisGeometry = new THREE.CylinderGeometry(0.15, 0.15, 35, 16);
+            const axisMaterial = new THREE.MeshPhongMaterial({ 
+                color: 0x667eea,
+                emissive: 0x667eea,
+                emissiveIntensity: 0.3
+            });
+            const axis = new THREE.Mesh(axisGeometry, axisMaterial);
+            axis.rotation.z = Math.PI / 2;
+            axis.position.y = 0;
+            scene.add(axis);
+            objects.push(axis);
+
+            projectsByYear.forEach((project, idx) => {
+                const yearOffset = project.year - startYear;
+                const x = (yearOffset / yearsSpan) * 30 - 15;
+                
+                const sameYearProjects = projectsByYear.filter(p => p.year === project.year);
+                const indexInYear = sameYearProjects.indexOf(project);
+                const totalInYear = sameYearProjects.length;
+                
+                const y = (indexInYear - (totalInYear - 1) / 2) * 2;
+                const z = -3 + Math.random() * 2;
+
+                const geometry = new THREE.SphereGeometry(0.6, 24, 24);
+                const material = new THREE.MeshPhongMaterial({
+                    color: project.color,
+                    emissive: project.color,
+                    emissiveIntensity: 0.4,
+                    shininess: 100
+                });
+                const sphere = new THREE.Mesh(geometry, material);
+                sphere.position.set(x, y, z);
+                sphere.userData = { 
+                    initialY: y,
+                    project: project.name,
+                    pulseOffset: idx * 0.5
+                };
+                scene.add(sphere);
+                objects.push(sphere);
+
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 512;
+                canvas.height = 128;
+                context.fillStyle = '#ffffff';
+                context.font = 'Bold 32px Arial';
+                context.textAlign = 'center';
+                context.fillText(project.name, 256, 50);
+                context.font = '24px Arial';
+                context.fillText(project.role, 256, 85);
+
+                const texture = new THREE.CanvasTexture(canvas);
+                const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+                const sprite = new THREE.Sprite(spriteMaterial);
+                sprite.position.set(x, y + 1.5, z);
+                sprite.scale.set(3.5, 1, 1);
+                scene.add(sprite);
+                objects.push(sprite);
+
+                const linePoints = [
+                    new THREE.Vector3(x, 0, 0),
+                    new THREE.Vector3(x, y, z)
+                ];
+                const lineGeometry = new THREE.BufferGeometry().setFromPoints(linePoints);
+                const lineMaterial = new THREE.LineBasicMaterial({
+                    color: project.color,
+                    opacity: 0.6,
+                    transparent: true,
+                    linewidth: 2
+                });
+                const line = new THREE.Line(lineGeometry, lineMaterial);
+                scene.add(line);
+                objects.push(line);
+            });
+
+            for (let year = startYear; year <= endYear; year++) {
+                const yearOffset = year - startYear;
+                const x = (yearOffset / yearsSpan) * 30 - 15;
+
+                const markerGeometry = new THREE.SphereGeometry(0.3, 16, 16);
+                const markerMaterial = new THREE.MeshPhongMaterial({
+                    color: 0xffffff,
+                    emissive: 0x667eea,
+                    emissiveIntensity: 0.5
+                });
+                const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+                marker.position.set(x, 0, 0);
+                scene.add(marker);
+                objects.push(marker);
+
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 256;
+                canvas.height = 128;
+                context.fillStyle = '#ffffff';
+                context.font = 'Bold 48px Arial';
+                context.textAlign = 'center';
+                context.fillText(year.toString(), 128, 80);
+
+                const texture = new THREE.CanvasTexture(canvas);
+                const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+                const sprite = new THREE.Sprite(spriteMaterial);
+                sprite.position.set(x, -2, 0);
+                sprite.scale.set(2, 1, 1);
+                scene.add(sprite);
+                objects.push(sprite);
+            }
+        }
+
+        function createArchitectureView() {
+            clearObjects();
+
+            const layers = [
+                { name: 'Frontend', techs: ['React', 'Vue.js'], y: 5, color: 0x61dafb },
+                { name: 'API Gateway', techs: ['Spring Cloud'], y: 2, color: 0x6bcf7f },
+                { name: 'Services', techs: ['Spring Boot', 'MSA'], y: -1, color: 0xff9f43 },
+                { name: 'Database', techs: ['Oracle', 'MySQL', 'PostgreSQL'], y: -4, color: 0x4ecdc4 }
+            ];
+
+            layers.forEach((layer, layerIdx) => {
+                const planeGeometry = new THREE.BoxGeometry(12, 0.3, 6);
+                const planeMaterial = new THREE.MeshPhongMaterial({
+                    color: layer.color,
+                    emissive: layer.color,
+                    emissiveIntensity: 0.3,
+                    transparent: true,
+                    opacity: 0.7
+                });
+                const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+                plane.position.set(0, layer.y, 0);
+                plane.userData = { layerIndex: layerIdx };
+                scene.add(plane);
+                objects.push(plane);
+
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 512;
+                canvas.height = 256;
+                context.fillStyle = '#ffffff';
+                context.font = 'Bold 56px Arial';
+                context.textAlign = 'center';
+                context.fillText(layer.name, 256, 100);
+                context.font = '32px Arial';
+                context.fillText(layer.techs.join(', '), 256, 160);
+
+                const texture = new THREE.CanvasTexture(canvas);
+                const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+                const sprite = new THREE.Sprite(spriteMaterial);
+                sprite.position.set(0, layer.y + 0.5, 0);
+                sprite.scale.set(8, 4, 1);
+                scene.add(sprite);
+                objects.push(sprite);
+
+                layer.techs.forEach((tech, techIdx) => {
+                    const angle = (techIdx / layer.techs.length) * Math.PI * 2;
+                    const radius = 5;
+                    const x = Math.cos(angle) * radius;
+                    const z = Math.sin(angle) * radius;
+
+                    const boxGeometry = new THREE.BoxGeometry(1, 1, 0.2);
+                    const boxMaterial = new THREE.MeshPhongMaterial({
+                        color: layer.color,
+                        emissive: layer.color,
+                        emissiveIntensity: 0.5
+                    });
+                    const box = new THREE.Mesh(boxGeometry, boxMaterial);
+                    box.position.set(x, layer.y, z);
+                    box.userData = { 
+                        angle: angle, 
+                        radius: radius,
+                        layerY: layer.y,
+                        rotationSpeed: 0.01
+                    };
+                    scene.add(box);
+                    objects.push(box);
+                });
+
+                if (layerIdx < layers.length - 1) {
+                    const nextLayer = layers[layerIdx + 1];
+                    const linePoints = [
+                        new THREE.Vector3(0, layer.y - 0.2, 0),
+                        new THREE.Vector3(0, nextLayer.y + 0.2, 0)
+                    ];
+                    const lineGeometry = new THREE.BufferGeometry().setFromPoints(linePoints);
+                    const lineMaterial = new THREE.LineBasicMaterial({
+                        color: 0x667eea,
+                        opacity: 0.5,
+                        transparent: true
+                    });
+                    const line = new THREE.Line(lineGeometry, lineMaterial);
+                    scene.add(line);
+                    objects.push(line);
+                }
+            });
+
+            const cloudCanvas = document.createElement('canvas');
+            const cloudContext = cloudCanvas.getContext('2d');
+            cloudCanvas.width = 512;
+            cloudCanvas.height = 256;
+            cloudContext.fillStyle = '#ffffff';
+            cloudContext.font = 'Bold 48px Arial';
+            cloudContext.textAlign = 'center';
+            cloudContext.fillText('☁️ AWS Cloud', 256, 100);
+            cloudContext.font = '32px Arial';
+            cloudContext.fillText('Infrastructure', 256, 150);
+
+            const cloudTexture = new THREE.CanvasTexture(cloudCanvas);
+            const cloudSpriteMaterial = new THREE.SpriteMaterial({ map: cloudTexture });
+            const cloudSprite = new THREE.Sprite(cloudSpriteMaterial);
+            cloudSprite.position.set(0, 8, -5);
+            cloudSprite.scale.set(6, 3, 1);
+            scene.add(cloudSprite);
+            objects.push(cloudSprite);
+        }
+
+        function clearObjects() {
+            objects.forEach(obj => {
+                scene.remove(obj);
+                if (obj.geometry) obj.geometry.dispose();
+                if (obj.material) obj.material.dispose();
+            });
+            objects = [];
+        }
+
+        function changeView(view) {
+            document.querySelectorAll('#controls button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + view).classList.add('active');
+
+            currentView = view;
+            switch(view) {
+                case 'skills': createSkillsView(); break;
+                case 'projects': createProjectsView(); break;
+                case 'timeline': createTimelineView(); break;
+                case 'architecture': createArchitectureView(); break;
+            }
+        }
+
+        let mouseX = 0, mouseY = 0;
+
+        function onMouseMove(event) {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            camera.position.x += (mouseX * 3 - camera.position.x) * 0.05;
+            camera.position.y += (mouseY * 3 - camera.position.y + 5) * 0.05;
+            camera.lookAt(scene.position);
+
+            const time = Date.now() * 0.001;
+
+            objects.forEach((obj, idx) => {
+                if (obj.geometry) {
+                    if (obj.geometry.type === 'SphereGeometry') {
+                        obj.rotation.y += 0.01;
+                        
+                        if (obj.userData.orbitAngle !== undefined) {
+                            obj.userData.orbitAngle += 0.003;
+                            const newX = obj.userData.centerX + Math.cos(obj.userData.orbitAngle) * obj.userData.orbitRadius;
+                            const newZ = obj.userData.centerZ + Math.sin(obj.userData.orbitAngle) * obj.userData.orbitRadius;
+                            obj.position.x = newX;
+                            obj.position.z = newZ;
+                            obj.position.y = obj.userData.centerY + Math.sin(time + idx) * 0.3;
+                        }
+                        
+                        if (obj.userData.pulseOffset !== undefined) {
+                            const pulse = Math.sin(time * 2 + obj.userData.pulseOffset) * 0.15;
+                            obj.scale.set(1 + pulse, 1 + pulse, 1 + pulse);
+                        }
+                        
+                        if (obj.userData.initialY !== undefined) {
+                            obj.position.y = obj.userData.initialY + Math.sin(time + idx) * 0.3;
+                        }
+                    } else if (obj.geometry.type === 'BoxGeometry') {
+                        if (obj.userData.rotationSpeed) {
+                            obj.rotation.y += obj.userData.rotationSpeed;
+                            obj.rotation.x += obj.userData.rotationSpeed * 0.6;
+                        } else {
+                            obj.rotation.y += 0.005;
+                            obj.rotation.x += 0.003;
+                        }
+                        
+                        if (obj.userData.angle !== undefined) {
+                            const angle = obj.userData.angle + time * 0.3;
+                            obj.position.x = Math.cos(angle) * obj.userData.radius;
+                            obj.position.z = Math.sin(angle) * obj.userData.radius;
+                        }
+                    } else if (obj.geometry.type === 'TorusGeometry') {
+                        if (obj.userData.rotationSpeed) {
+                            obj.rotation.z += obj.userData.rotationSpeed;
+                        }
+                        if (obj.userData.rotationSpeedX) {
+                            obj.rotation.x += obj.userData.rotationSpeedX;
+                            obj.rotation.y += obj.userData.rotationSpeedY;
+                        }
+                    } else if (obj.geometry.type === 'CylinderGeometry') {
+                        if (obj.userData.layerIndex !== undefined) {
+                            obj.rotation.y += 0.002;
+                        }
+                    }
+                } else if (obj.type === 'Group') {
+                    if (obj.userData.floatSpeed) {
+                        obj.position.y = obj.userData.baseY + Math.sin(time * obj.userData.floatSpeed) * 0.3;
+                        obj.rotation.y += obj.userData.rotationSpeed;
+                        
+                        const hoverEffect = Math.sin(time * 0.5 + obj.position.x) * 0.1;
+                        obj.scale.set(1 + hoverEffect * 0.1, 1 + hoverEffect * 0.1, 1 + hoverEffect * 0.1);
+                    }
+                } else if (obj.type === 'Points') {
+                    if (obj.userData.rotationSpeed) {
+                        obj.rotation.y += obj.userData.rotationSpeed;
+                    }
+                    if (obj.userData.parentSphere) {
+                        obj.rotation.x += 0.002;
+                        obj.rotation.z += 0.001;
+                    }
+                } else if (obj.type === 'Sprite') {
+                    if (obj.userData.parentSphere) {
+                        const parent = obj.userData.parentSphere;
+                        obj.position.x = parent.position.x;
+                        obj.position.z = parent.position.z;
+                        obj.position.y = parent.position.y + parent.geometry.parameters.radius + 2;
+                    }
+                }
+            });
+
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        window.addEventListener('load', function() {
+            if (typeof THREE !== 'undefined') {
+                if (!CanvasRenderingContext2D.prototype.roundRect) {
+                    CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+                        if (w < 2 * r) r = w / 2;
+                        if (h < 2 * r) r = h / 2;
+                        this.beginPath();
+                        this.moveTo(x + r, y);
+                        this.arcTo(x + w, y, x + w, y + h, r);
+                        this.arcTo(x + w, y + h, x, y + h, r);
+                        this.arcTo(x, y + h, x, y, r);
+                        this.arcTo(x, y, x + w, y, r);
+                        this.closePath();
+                        return this;
+                    }
+                }
+                init();
+            } else {
+                alert('Unable to load Three.js. Please check your internet connection.');
+            }
+        });
+    </script>
+</body>
+</html>
